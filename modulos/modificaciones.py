@@ -1,3 +1,4 @@
+import pandas as pd
 import modulos.matriz as mat
 
 def validar_opcion(mensaje: str, val_min: int, val_max: int) -> int:
@@ -22,13 +23,30 @@ def validar_opcion(mensaje: str, val_min: int, val_max: int) -> int:
         return validar_opcion(mensaje, val_min, val_max)
     return entrada
 
-# Función para ordenar legendarios por poder DESC
-def ordenar_legendarios(df) -> None:
+def ordenar_legendarios(df: pd.DataFrame) -> None:
+    '''
+    Filtra los Pokémon legendarios y los ordena por poder de mayor a menor, luego muestra la matriz.
+
+    Args:
+    1: df (DataFrame): DataFrame que contiene los Pokémon con sus atributos.
+
+    Return:
+    None (la función no retorna nada, solo muestra los datos por pantalla).
+    '''
     legendarios = df[df['rareza'].str.lower() == 'legendario']
     ordenados = legendarios.sort_values(by='poder', ascending=False)
     mat.mostrar_matriz(ordenados)
 
-# Función para filtrar por tipo fuego
-def filtrar_fuego(df) -> None:
+def filtrar_fuego(df: pd.DataFrame) -> None:
+    '''
+    Filtra los Pokémon de tipo fuego y muestra la matriz con los resultados.
+
+    Args:
+    1: df (DataFrame): DataFrame que contiene los Pokémon con sus atributos.
+
+    Return:
+    None (la función no retorna nada, solo muestra los datos por pantalla).
+    '''
     fuego = df[df['tipo'].str.lower() == 'fuego']
     mat.mostrar_matriz(fuego)
+

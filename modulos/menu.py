@@ -4,7 +4,17 @@ import modulos.matriz as mat
 
 df = pd.read_csv("archivos/pokemons.csv")
 
-def menu():
+def menu() -> None:
+    '''
+    Muestra un menú interactivo en consola para ejecutar diferentes operaciones sobre el DataFrame de Pokémon.
+    Permite al usuario seleccionar opciones para mostrar datos, filtrar, ordenar y salir del programa.
+
+    Args:
+    No recibe argumentos.
+
+    Return:
+    None (la función controla el flujo del programa y muestra resultados en consola).
+    '''
     while True:
         print("\n--- Menú de Opciones ---")
         print("1. Mostrar matriz")
