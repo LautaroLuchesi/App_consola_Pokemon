@@ -1,3 +1,5 @@
+import modulos.matriz as mat
+
 def validar_opcion(mensaje: str, val_min: int, val_max: int) -> int:
     '''
     valida que el usuario ingrese una opcion valida mediante recursion
@@ -19,3 +21,14 @@ def validar_opcion(mensaje: str, val_min: int, val_max: int) -> int:
         print("Opcion fuera del rango")
         return validar_opcion(mensaje, val_min, val_max)
     return entrada
+
+# Función para ordenar legendarios por poder DESC
+def ordenar_legendarios(df):
+    legendarios = df[df['rareza'].str.lower() == 'legendario']
+    ordenados = legendarios.sort_values(by='poder', ascending=False)
+    mat.mostrar_matriz(ordenados)
+
+# Función para filtrar por tipo fuego
+def filtrar_fuego(df):
+    fuego = df[df['tipo'].str.lower() == 'fuego']
+    mat.mostrar_matriz(fuego)
