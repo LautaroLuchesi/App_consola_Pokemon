@@ -23,12 +23,12 @@ def validar_opcion(mensaje: str, val_min: int, val_max: int) -> int:
     return entrada
 
 # Función para ordenar legendarios por poder DESC
-def ordenar_legendarios(df):
+def ordenar_legendarios(df) -> None:
     legendarios = df[df['rareza'].str.lower() == 'legendario']
     ordenados = legendarios.sort_values(by='poder', ascending=False)
     mat.mostrar_matriz(ordenados)
 
 # Función para filtrar por tipo fuego
-def filtrar_fuego(df):
+def filtrar_fuego(df) -> None:
     fuego = df[df['tipo'].str.lower() == 'fuego']
     mat.mostrar_matriz(fuego)

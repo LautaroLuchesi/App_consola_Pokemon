@@ -2,7 +2,7 @@ import pandas as pd
 import modulos.modificaciones as mod
 import modulos.matriz as mat
 
-df = pd.read_csv("pokemons.csv")
+df = pd.read_csv("archivos/pokemons.csv")
 
 def menu():
     while True:
