@@ -1,5 +1,5 @@
 import pandas as pd
-import modulos.matriz as mat
+import matriz as mat
 
 def validar_opcion(mensaje: str, val_min: int, val_max: int) -> int:
     '''
@@ -50,3 +50,26 @@ def filtrar_fuego(df: pd.DataFrame) -> None:
     fuego = df[df['tipo'].str.lower() == 'fuego']
     mat.mostrar_matriz(fuego)
 
+def mas_fuerte_por_tipo(df: pd.DataFrame) -> None:
+    '''
+    Pide al usuario un tipo de Pokémon, filtra el DataFrame y muestra el Pokémon
+    con mayor poder dentro de ese tipo.
+
+    Args:
+    df: DataFrame de pandas que contiene los datos de los Pokémon.
+
+    Return:
+    None (imprime el resultado por pantalla).
+    '''
+
+    tipo_usu = input("Ingrese el tipo del Pokemon que desea buscar: ").strip().lower()
+    filtrado = df[df['tipo'].str.lower() == tipo_usu]
+
+    if filtrado.empty:
+        print(f"No se encontro ningun pokemon del tipo '{tipo_usu}'.")
+
+    mas_fuerte = filtrado.sort_values(by = 'tipo', ascending = False).iloc[0]
+    
+    print("\nPokémon más fuerte del tipo", tipo_usu.capitalize())
+    print("." * 50)
+    print(f"{mas_fuerte['id']:>3} | {mas_fuerte['nombre']:<12} | {mas_fuerte['tipo']:<10} | {mas_fuerte['poder']:>5} | {mas_fuerte['rareza']}")

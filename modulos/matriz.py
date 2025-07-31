@@ -1,5 +1,5 @@
 import pandas as pd
-
+ 
 def mostrar_matriz(df: pd.DataFrame) -> None:
     '''
     Muestra el contenido de un DataFrame con formato tabular.
