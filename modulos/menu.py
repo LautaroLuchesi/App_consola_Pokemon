@@ -23,8 +23,11 @@ def menu() -> None:
         print("4. Filtrar por tipo 'fuego'")
         print("5. Trasponer matriz")
         print("6. Mostrar Pokemon mas fuerte por tipo")
-        print("7. Salir")
-        opcion = mod.validar_opcion("Elige una opcion entre 1 y 7: ", 1, 7)
+        print("7. Mostrar promedio por tipo")
+        print("8. Mostrar cantidad por tipo")
+        print("9. Crear categoria")
+        print("10. Salir")
+        opcion = mod.validar_opcion("Elige una opcion entre 1 y 10: ", 1, 10)
 
         match opcion:
             case 1 :
@@ -40,6 +43,12 @@ def menu() -> None:
             case 6:
                 mod.mas_fuerte_por_tipo(df)
             case 7:
+                mod.prom_por_tipo(df)
+            case 8:
+                mod.cant_por_tipo(df)
+            case 9:
+                mod.crear_categoria(df)
+            case 10:
                 print("Saliendo del programa...")
                 break
 

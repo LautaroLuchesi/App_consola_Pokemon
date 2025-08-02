@@ -71,5 +71,22 @@ def mas_fuerte_por_tipo(df: pd.DataFrame) -> None:
     mas_fuerte = filtrado.sort_values(by = 'tipo', ascending = False).iloc[0]
     
     print("\nPokémon más fuerte del tipo", tipo_usu.capitalize())
-    print("." * 50)
+    print("-" * 50)
     print(f"{mas_fuerte['id']:>3} | {mas_fuerte['nombre']:<12} | {mas_fuerte['tipo']:<10} | {mas_fuerte['poder']:>5} | {mas_fuerte['rareza']}")
+
+
+def prom_por_tipo(df: pd.DataFrame) -> None:
+    print("\nPromedios por tipo:")
+    print("-" * 50)
+    print(df.groupby('tipo')['poder'].mean())
+    
+def cant_por_tipo(df: pd.DataFrame) -> None:
+    print("\nCantidades por tipo:")
+    print("-" * 50)
+    print(df['tipo'].value_counts())
+
+def crear_categoria(df: pd.DataFrame) -> None:
+    df['categoria'] = df['poder'].apply(lambda x: 'Alto' if x > 20 else 'Bajo')
+    print("\nCategoria(Alto: mas de 20, Bajo menos de 20):")
+    print("-" * 50)
+    print(df[['nombre', 'poder', 'categoria']])
